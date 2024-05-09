@@ -1,0 +1,7 @@
+__pycache__
+models/model*
+images/*.jpg
+images/*.JPG
+static
+template
+service.txt

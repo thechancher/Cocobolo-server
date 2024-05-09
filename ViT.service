@@ -1,0 +1,11 @@
+[Unit]
+Description=ViT Server
+
+[Service]
+Type=simple
+ExecStart=/home/thechancher/ViT/server.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
