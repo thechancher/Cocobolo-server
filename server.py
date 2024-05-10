@@ -22,13 +22,9 @@ cocobolo = Cocobolo()
 def main():
     return render_template("index.html")
 
-@app.route("/names")
+@app.route("/class_names")
 def names():
-    names = {
-        "index": [],
-        "names": cocobolo.getNames()
-    }
-    return jsonify(names)
+    return jsonify(cocobolo.getClassNames())
 
 @app.route("/CNN", methods=["POST"])
 def receiveImage():

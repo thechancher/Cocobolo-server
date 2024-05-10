@@ -21,6 +21,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 def pred_and_plot_image(
     model: torch.nn.Module,
     class_names: List[str],
+    class_labels: List[str],
     image_path: str,
     image_size: Tuple[int, int] = (224, 224),
     transform: torchvision.transforms = None,
@@ -102,10 +103,12 @@ def pred_and_plot_image(
     
     top_index = [sublist[:top].tolist() for sublist in sorted[1]][0]
     top_names = []
+    top_labels = []
     for index in top_index:
         top_names.append(class_names[index])
+        top_labels.append(class_labels[int(class_names[index])])
     top_probs = [sublist[:top].tolist() for sublist in sorted[0]][0]
     
-    data = [{"index": i, "name": n, "prob": p} for i, n, p in zip(top_index, top_names, top_probs)]
+    data = [{"index": i, "name": n, "label":l, "prob": p} for i, n, l, p in zip(top_index, top_names, top_labels, top_probs)]
     
     return data
