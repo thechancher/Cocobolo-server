@@ -80,10 +80,10 @@ def pred_and_plot_image(
     plt.figure()
     plt.imshow(img)
     plt.title(
-        f"Class: {class_names[target_image_pred_label]} | Probability: {target_image_pred_probs.max():.3f}"
+        f"Class: {class_labels[class_names[target_image_pred_label]]} | Probability: {target_image_pred_probs.max():.3f}"
     )
     plt.axis(False)
-    
+
     print("Class:")
     print(class_names[target_image_pred_label])
     print("")
@@ -106,7 +106,7 @@ def pred_and_plot_image(
     top_labels = []
     for index in top_index:
         top_names.append(class_names[index])
-        top_labels.append(class_labels[int(class_names[index])])
+        top_labels.append(class_labels[class_names[index]])
     top_probs = [sublist[:top].tolist() for sublist in sorted[0]][0]
     
     data = [{"index": i, "name": n, "label":l, "prob": p} for i, n, l, p in zip(top_index, top_names, top_labels, top_probs)]
