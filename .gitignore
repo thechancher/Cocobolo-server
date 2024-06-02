@@ -3,5 +3,7 @@ models/model*
 images/*.jpg
 images/*.JPG
 static/*
+!static/.gitkeep
 template/*
+!template/.gitkeep
 service.txt
